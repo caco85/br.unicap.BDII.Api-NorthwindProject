@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Customer_Customer_Demo extends Model
+{
+    use HasFactory;
+
+    protected $table = 'CustomerCustomerDemo';
+
+    protected $fillable =
+    [
+        
+    ];
+}
