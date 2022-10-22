@@ -24,7 +24,7 @@ class StoreCustomersRequest extends FormRequest
     public function rules()
     {
         return [
-            'instagram' => 'nullable|string',
+            'CustomerID' => 'nullable|string',
             'CompanyName'  => 'nullable|string',
             'ContactName'  => 'nullable|string',
             'ContactTitle'  => 'nullable|string',

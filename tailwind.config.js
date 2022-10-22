@@ -9,8 +9,8 @@ module.exports = {
     },
   //  plugins: [require("@tailwindcss/aspect-ratio")],
     plugins: [
-      //  require('@tailwindcss/forms'),
-    //   require('@tailwindcss/caspect-ratio'),
+        require("@tailwindcss/forms")
+      //  require('@tailwindcss/caspect-ratio'),
     ],
   }
 

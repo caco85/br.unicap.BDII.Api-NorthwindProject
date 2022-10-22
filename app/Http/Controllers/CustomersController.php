@@ -6,7 +6,7 @@ use App\Models\Customers;
 use App\Http\Requests\StoreCustomersRequest;
 use App\Http\Requests\UpdateCustomersRequest;
 use Redirect;
-
+use DB;
 class CustomersController extends Controller
 {
     /**
@@ -16,9 +16,11 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        // $customers = Customers::all();
+        $customers = Customers::all();
+        $title = "Lista de Clientes";
+        $nameButton = "Add Cliente";
 
-        return view('customer/customers');
+        return view('customer/customers',['customers'=> $customers,'title' => $title,'nameButton' => $nameButton]);
     }
 
     /**
@@ -28,7 +30,8 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return view('customer/create');
+        $titleButton = "Save";
+        return view('customer/create',['titleButton' => $titleButton]);
     }
 
     /**
@@ -44,6 +47,7 @@ class CustomersController extends Controller
 
         $customer = new Customers;
 
+        $customer->CustomerID = $data['CustomerID'];
         $customer->CompanyName = $data['CompanyName'];
         $customer->ContactName = $data['ContactName'];
         $customer->ContactTitle = $data['ContactTitle'];
@@ -67,10 +71,12 @@ class CustomersController extends Controller
      * @param  \App\Models\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function show(Customers $customer)
+    public function show($id)
     {
 
-        //$customer = Customer::find($id);
+        $customer = Customers::where('CustomerID', $id)->first();
+
+        dd( $customer);
         if ($customer) {
             return view('customer/show',['customer' => $customer]);
         }
@@ -85,11 +91,13 @@ class CustomersController extends Controller
      * @param  \App\Models\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customers $customer)
+    public function edit($id)
     {
-        //$customer = Customer::find($id);
+        $customer = Customers::where('CustomerID', $id)->first();
+       //dd( $customer);
+        $titleButton = "Update";
         if ($customer) {
-            return view('customer/edit',['customer' => $customer]);
+            return view('customer/edit',['customer' => $customer ,'titleButton' => $titleButton]);
         }
         return Redirect::to('customer/customers');
     }
@@ -101,13 +109,27 @@ class CustomersController extends Controller
      * @param  \App\Models\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCustomersRequest $request, Customers $customer)
+    public function update(UpdateCustomersRequest $request,$id)
     {
+        $titleButton = "Update";
+
         $data = $request->validated();
 
-        $customer->update($data);
+        $customer = Customers::where('CustomerID', $id)->first();
 
-        return Redirect::to('customer/edit',['customer'=>$customer]);
+      //  $customer->update($data);
+
+        $updated = DB::table('Customers')
+                ->where('CustomerID', $id)
+                ->update($data);
+
+        if ($updated) {
+            $customer = Customers::where('CustomerID', $id)->first();
+            return view('customer/edit',['customer'=>$customer, 'titleButton' => $titleButton ,'status']);
+        }
+
+        return Redirect::to('customer/customers');
+
     }
 
     /**
@@ -116,9 +138,9 @@ class CustomersController extends Controller
      * @param  \App\Models\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customers $customers)
+    public function destroy($id)
     {
-        $customer = Customer::find($id);
+        $customer = Customers::where('CustomerID', $id)->first();
 
         $customer->delete();
 

@@ -14,15 +14,17 @@ use App\Http\Controllers\CustomersController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index' ,['title' => 'Dashboard']);
 });
-
+Route::get('/about', function () {
+    return view('about' ,['title' => 'Sobre']);
+});
 //Route::resource('customer', CustomerController::class);
 Route::get('customer/customers', [CustomersController::class, 'index'])->name('customer.index');
 Route::get('customer/create', [CustomersController::class, 'create'])->name('customer.create');
-Route::get('customer/show/{$customer}', [CustomersController::class, 'show'])->name('customer.show');
-Route::get('customer/edit/{$customer}', [CustomersController::class, 'edit'])->name('customer.edit');
+Route::get('customer/show/{id}', [CustomersController::class, 'show'])->name('customer.show');
+Route::get('customer/edit/{id}', [CustomersController::class, 'edit'])->name('customer.edit');
 Route::post('customer', [CustomersController::class, 'store'])->name('customer.store');
-Route::post('customer/update/{$customer}', [CustomersController::class, 'update'])->name('customer.update');
+Route::post('customer/update/{id}', [CustomersController::class, 'update'])->name('customer.update');
 
 
