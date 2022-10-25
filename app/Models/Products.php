@@ -15,8 +15,8 @@ class Products extends Model
     [
         'ProductID',
         'ProductName',
-        'Supplier_ID',
-        'Category_ID' ,
+        'SupplierID',
+        'CategoryID' ,
         'QuantityPerUnit',
         'UnitPrice',
         'UnitsInStock',
@@ -25,4 +25,15 @@ class Products extends Model
         'Discontinued',
 
     ];
+
+    public function supplier()
+    {
+        return $this->hasOne(Suppliers::class,'SupplierID');
+    }
+
+
+    public function category()
+    {
+        return $this->hasOne(Categories::class,'CategoryID');
+    }
 }

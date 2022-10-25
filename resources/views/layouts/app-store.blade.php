@@ -39,11 +39,31 @@
 
                 <a href="{{url('customer/customers')}}" class="text-gray-300 hover:bg-emerald-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
 
-                <a href="#" class="text-gray-300 hover:bg-emerald-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
+                <a href="{{url('order/orders')}}" class="text-gray-300 hover:bg-emerald-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Compras</a>
                 </div>
             </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <a
+                href="{{url('cart')}}"
+                class="flex items-center py-2 px-3 transition-colors hover:bg-emerald-700 hover:text-white"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 mr-2 -mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                Carrinho
+              </a>
             <button type="button" class="rounded-full bg-emerald-700 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span class="sr-only">View notifications</span>
                 <!-- Heroicon name: outline/bell -->
@@ -82,7 +102,7 @@
 
             <a href="{{url('customer/customers')}}" class="text-gray-300 hover:bg-emerald-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Clientes</a>
 
-            <a href="#" class="text-gray-300 hover:bg-emerald-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Produtos</a>
+            <a href="{{url('order/orders')}}" class="text-gray-300 hover:bg-emerald-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Compras</a>
         </div>
         </div>
     </nav>

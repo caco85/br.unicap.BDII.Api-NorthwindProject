@@ -13,7 +13,7 @@ class Orders extends Model
     protected $table = 'Orders';
 
     public $timestamps = false;
-    
+
     protected $fillable =
     [
         'OrderID',
@@ -31,4 +31,20 @@ class Orders extends Model
         'ShipPostalCode',
         'ShipCountry',
     ];
+
+    public function customer()
+    {
+        return $this->hasOne(Customers::class,'CustomerID');
+    }
+
+
+    public function employee()
+    {
+        return $this->hasOne(Employees::class,'EmployeeID');
+    }
+
+    public function orderDetails()
+    {
+        return $this->hasOne(Order_Details::class,'OrderID');
+    }
 }

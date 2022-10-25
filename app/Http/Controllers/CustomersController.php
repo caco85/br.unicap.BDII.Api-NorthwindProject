@@ -76,7 +76,7 @@ class CustomersController extends Controller
 
         $customer = Customers::where('CustomerID', $id)->first();
 
-        dd( $customer);
+       // dd( $customer);
         if ($customer) {
             return view('customer/show',['customer' => $customer]);
         }
@@ -140,9 +140,8 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        $customer = Customers::where('CustomerID', $id)->first();
 
-        $customer->delete();
+        $customer = Customers::where('CustomerID', $id)->delete();
 
         return Redirect::to('customer/customers');
     }
