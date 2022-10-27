@@ -125,7 +125,7 @@ class CustomersController extends Controller
 
         if ($updated) {
             $customer = Customers::where('CustomerID', $id)->first();
-            return view('customer/edit',['customer'=>$customer, 'titleButton' => $titleButton ,'status']);
+            return view('customer/edit',['customer'=>$customer, 'titleButton' => $titleButton ]);
         }
 
         return Redirect::to('customer/customers');

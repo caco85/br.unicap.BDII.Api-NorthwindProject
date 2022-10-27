@@ -59,8 +59,8 @@ class OrdersController extends Controller
        // dd($now);
 
         $order = new Orders;
-        $order->CustomerID = 'ALFKI';
-        $order->EmployeeID = 9;
+        $order->CustomerID = 'ANATR';
+        $order->EmployeeID = 8;
         $order->OrderDate =  $now;
         $order->RequiredDate =  $now;
         $order->ShippedDate =  $now;
@@ -76,12 +76,12 @@ class OrdersController extends Controller
 
 
         $inserted = DB::table('Order Details')->insert([
-            ['OrderID' => $order->id, 'ProductID' => 21 ,'UnitPrice' => 10.000, 'Quantity' => 2 ,'Discount' => 0],
+            ['OrderID' => $order->id, 'ProductID' => 2 ,'UnitPrice' => 19.000, 'Quantity' => 2 ,'Discount' => 0],
             ['OrderID' => $order->id, 'ProductID' => 23 ,'UnitPrice' => 9.000, 'Quantity' => 3 ,'Discount' => 0],
-            ['OrderID' => $order->id, 'ProductID' => 10 ,'UnitPrice' => 31.00, 'Quantity' => 7 , 'Discount' => 0] ,
+            ['OrderID' => $order->id, 'ProductID' => 10 ,'UnitPrice' => 31.00, 'Quantity' => 4 , 'Discount' => 0] ,
         ]);
 
-       // dd($inserted);
+      //  dd($inserted);
 
         $orders = Orders::all()->sortByDesc("OrderID");
         $title = "Lista de Compras";

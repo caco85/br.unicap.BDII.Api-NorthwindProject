@@ -1,12 +1,6 @@
   <div class="mt-10 sm:mt-0  flex items-center justify-between">
     <div class="md:grid md:grid-cols-3 md:gap-6 ">
       <div class="mt-5 md:col-span-2 md:mt-0 ">
-
-        @if (session('status'))
-            <div class="text-green-500" role="alert">
-                Updated is successfully
-            </div>
-        @endif
         <form
             @if ($titleButton == 'Update')
                 action="{{ url('customer/update') }}/{{$customer->CustomerID}}"
@@ -22,7 +16,7 @@
               <div class="grid grid-cols-12 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                     <label for="CustomerID" class="block text-sm font-medium text-gray-700">CustomerID</label>
-                    <input type="text" name="CustomerID" id="CustomerID" value="{{@$customer->CustomerID}}" {{$titleButton == 'Update'? 'disabled' : ''}}
+                    <input type="text" name="CustomerID" id="CustomerID" value="{{@$customer->CustomerID}}"
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
 
