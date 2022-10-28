@@ -76,25 +76,15 @@ class OrdersController extends Controller
 
 
         $inserted = DB::table('Order Details')->insert([
-            ['OrderID' => $order->id, 'ProductID' => 2 ,'UnitPrice' => 19.000, 'Quantity' => 2 ,'Discount' => 0],
+            ['OrderID' => $order->id, 'ProductID' => 5 ,'UnitPrice' => 21.3500, 'Quantity' => 2 ,'Discount' => 0],
             ['OrderID' => $order->id, 'ProductID' => 23 ,'UnitPrice' => 9.000, 'Quantity' => 3 ,'Discount' => 0],
             ['OrderID' => $order->id, 'ProductID' => 10 ,'UnitPrice' => 31.00, 'Quantity' => 4 , 'Discount' => 0] ,
         ]);
 
       //  dd($inserted);
 
-        $orders = Orders::all()->sortByDesc("OrderID");
-        $title = "Lista de Compras";
-        $nameButton = "Add compra";
+      return Redirect::to('order/orders');
 
-        foreach ($orders as $key => $value)
-        {
-            $orders[$key]->customer =  Customers::where('CustomerID', $orders[$key]->CustomerID)->first();
-            $orders[$key]->employee = Employees::where('EmployeeID', $orders[$key]->EmployeeID)->first();
-
-        }
-
-        return view('order/orders',['orders'=> $orders,'title' => $title,'nameButton' => $nameButton]);
     }
 
     /**

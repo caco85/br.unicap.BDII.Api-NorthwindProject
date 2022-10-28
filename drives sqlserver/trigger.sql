@@ -1,9 +1,10 @@
 use Northwind
-CREATE TRIGGER TRIGGER_BD2022_2 ON [Order Details] for INSERT
+go
+CREATE TRIGGER TRIGGER_BD2022_2  ON Products for INSERT
 AS
-	IF (SELECT Quantity from  INSERTED) >= 5
+	IF (SELECT UnitsInStock from INSERTED) = 0
 	BEGIN
-	 PRINT 'Compra não realizada que superou o limete de produtos por cliente ,limite 5 produtos por cliente,favor reduzir a quantidade para 5'
+	 PRINT 'Compra não realizada que não tem estoque do produto no momento'
 	 PRINT 'Operação cancelada'
 	 ROLLBACK TRANSACTION
 	END
