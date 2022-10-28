@@ -12,7 +12,7 @@
                         <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                             <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
                         </div>
-                        <p class="mt-1 text-lg font-medium text-gray-900">{{$product->ProductID}}</p>
+                        {{-- <p class="mt-1 text-lg font-medium text-gray-900">{{$product->ProductID}}</p> --}}
                         <h3 class="mt-4 text-sm text-gray-700">Nome: {{$product->ProductName}}</h3>
                         <p class="mt-1 text-lg font-medium text-gray-900">Preço: ${{$product->UnitPrice}}</p>
                         <p class="mt-1 text-lg font-medium text-gray-900">Disponiveis: {{$product->UnitsInStock}}</p>
