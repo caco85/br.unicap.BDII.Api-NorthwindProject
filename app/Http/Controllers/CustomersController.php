@@ -7,6 +7,8 @@ use App\Http\Requests\StoreCustomersRequest;
 use App\Http\Requests\UpdateCustomersRequest;
 use Redirect;
 use DB;
+use Illuminate\Support\Facades\Cache;
+
 class CustomersController extends Controller
 {
     /**

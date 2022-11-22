@@ -8,6 +8,7 @@ use App\Models\Products;
 use App\Models\Suppliers;
 use App\Models\Categories;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {

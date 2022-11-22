@@ -10,6 +10,7 @@ use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
 use Redirect;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 class OrdersController extends Controller
 {

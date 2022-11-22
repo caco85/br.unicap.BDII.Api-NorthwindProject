@@ -38,3 +38,4 @@ Route::get('order/create', [OrdersController::class, 'create'])->name('orders.cr
 Route::post('order', [OrdersController::class, 'store'])->name('orders.store');
 Route::get('order/show/{id}', [OrdersController::class, 'show'])->name('orders.show');
 
+Route::get('product/products', [ProductsController::class, 'index'])->name('products.index');

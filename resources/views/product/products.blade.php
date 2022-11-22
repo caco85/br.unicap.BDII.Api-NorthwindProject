@@ -1,6 +1,7 @@
 @extends('layouts.app-store')
 @section('content')
 <div class="bg-white">
+    <h3 class="text-3x1 text-sm  font-medium  text-gray-700 m-4"> O produto do Redis: {{@$product}}</h3>
     <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <h2 class="sr-only"></h2>
 

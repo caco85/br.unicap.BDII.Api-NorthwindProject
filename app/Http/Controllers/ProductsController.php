@@ -9,6 +9,7 @@ use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use Redirect;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 class ProductsController extends Controller
 {
@@ -19,9 +20,29 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
+        // $products = Products::all();
 
-        return view('product/products',['products'=> $products,'title' => $title,'nameButton' => $nameButton]);
+        Cache::put('Notebook', 'acer aspire 3 21b',10);
+        $product = Cache::get('Notebook');
+
+        // if (Cache::has('10_primeiros_produtos')) {
+        //    $products = Cache::get('10_primeiros_produtos');
+        // }else {
+        //     $products = Products::orderByDesc('ProductID')->limit(10)->get();
+        //     Cache::put('10_primeiros_produtos', $products, 15);
+        // }
+
+        //$products = Products::where('UnitsInStock', 0)->get();
+        //Cache::put('produtos_sem_estoque', $products, 15);
+
+        $products = Products::where('UnitsInStock','>',0)->get();
+        Cache::put('produtos_em_estoque', $products, 15);
+
+        // $products = Cache::remember('10_primeiros_produtos', 15, function () {
+        //     return  Products::orderByDesc('ProductID')->limit(10)->get();
+        // });
+
+        return view('product/products',['products'=> $products,'title' => 'Testando o Redis','product'=> $product]);
 
     }
 

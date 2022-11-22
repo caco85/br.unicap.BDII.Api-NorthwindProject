@@ -3,7 +3,7 @@
     <h1 class="text-3xl font-bold underline">
         Bem vindo a Loja virtual
     </h1>
-    @include('produtc.products')
+    @include('product.products')
 
 
 @endsection
